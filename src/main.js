@@ -9,9 +9,9 @@ function renderCurrentWeather(data) {
   document.querySelector(".current-weather__description").textContent =
     data.description;
   document.querySelector(".current-weather__min-temp").textContent =
-    `Min: ${Math.round(data.min_temp)}°`;
+    `T: ${Math.round(data.min_temp)}°`;
   document.querySelector(".current-weather__max-temp").textContent =
-    `Max: ${Math.round(data.max_temp)}°`;
+    `H: ${Math.round(data.max_temp)}°`;
 }
 
 function renderLoading(isLoading) {

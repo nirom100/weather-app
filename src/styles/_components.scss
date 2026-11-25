@@ -22,3 +22,36 @@
     gap: 0.5rem;
   }
 }
+
+.day-forecast {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  padding: 1rem;
+
+  border-radius: $border-radius;
+  backdrop-filter: blur(5px);
+  box-shadow: $text-shadow;
+
+  &__summary {
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 254, 254, 0.424);
+    padding-bottom: 1rem;
+  }
+
+  &__list {
+    display: flex;
+    gap: 1rem;
+    scrollbar-width: none;
+    overflow-x: auto;
+  }
+
+  &__hour {
+    gap: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
