@@ -5,9 +5,29 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wetter App</title>
+    <link rel="stylesheet" href="src/styles/styles.scss" />
   </head>
   <body>
-    <div id="app">COMING SOON</div>
+    <div id="app">
+      <div class="loading" id="loading">
+        <div class="ldr-rain-ripple" role="status" aria-label="Loading">
+          <span style="--x: 24%; --y: 34%; --d: 0s"></span>
+          <span style="--x: 68%; --y: 24%; --d: -0.5s"></span>
+          <span style="--x: 46%; --y: 72%; --d: -1s"></span>
+          <span style="--x: 78%; --y: 66%; --d: -1.5s"></span>
+        </div>
+        <p>Loading...</p>
+      </div>
+      <div class="current-weather">
+        <h2 class="current-weather__city"></h2>
+        <h1 class="current-weather__temp"></h1>
+        <p class="current-weather__description"></p>
+        <div class="current-weather__day-forecast">
+          <p class="current-weather__min-temp"></p>
+          <p class="current-weather__max-temp"></p>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
