@@ -48,13 +48,16 @@ export async function getDailyForecast(currentCity, days, date) {
 function mapResultToObj(result) {
   const location = result.location;
   const currentData = result.current;
-  const forecastData = result.forecast?.forecastday?.[0]?.day;
+  const forecastDayData = result.forecast?.forecastday?.[0]?.day;
+  const forecastHourData = result.forecast?.forecastday?.[0]?.hour;
 
   return {
     city: location.name,
     currentTemp: currentData.temp_c,
     description: currentData.condition.text,
-    min_temp: forecastData.mintemp_c,
-    max_temp: forecastData.maxtemp_c,
+    minTemp: forecastDayData.mintemp_c,
+    maxTemp: forecastDayData.maxtemp_c,
+    maxWind: forecastDayData.maxwind_kph,
+    dayHour: forecastHourData,
   };
 }
