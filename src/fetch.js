@@ -45,6 +45,23 @@ export async function getDailyForecast(currentCity, days, date) {
   }
 }
 
+function mapCurrentHourForecast(result) {
+  // Get day 0 + 1
+  const today = result.forecast?.forecastday[0].hour;
+  const tomorrow = result.forecast?.forecastday[1].hour;
+
+  // get current hour
+  const hour = new Date().getHours();
+
+  // determine lengths of arrays & combine
+  const hoursToday = today.slice(hour);
+  const missingLength = 24 - hoursToday.length;
+  const missingTomorrow = tomorrow.slice(0, missingLength);
+
+  const merged = hoursToday.concat(missingTomorrow);
+  return merged;
+}
+
 function mapResultToObj(result) {
   const location = result.location;
   const currentData = result.current;
@@ -58,6 +75,6 @@ function mapResultToObj(result) {
     minTemp: forecastDayData.mintemp_c,
     maxTemp: forecastDayData.maxtemp_c,
     maxWind: forecastDayData.maxwind_kph,
-    dayHour: forecastHourData,
+    dayHour: mapCurrentHourForecast(result),
   };
 }

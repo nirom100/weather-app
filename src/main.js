@@ -33,10 +33,11 @@ function renderHourlyForecast(data) {
   hourElements.forEach((element, i) => {
     const hour = data.dayHour[i];
 
-    element.querySelector(".day-forecast__time").textContent = formatHour(
-      hour.time,
-    );
+    element.querySelector(".day-forecast__time").textContent =
+      i === 0 ? "Jetzt" : formatHour(hour.time);
+
     element.querySelector(".day-forecast__icon").src = hour.condition.icon;
+
     element.querySelector(".day-forecast__temp").textContent =
       `${Math.round(hour.temp_c)}°`;
   });
@@ -62,7 +63,7 @@ function formatHour(dateTimeString) {
 async function loadWeather() {
   renderLoading(true);
   try {
-    const currentForecast = await getDailyForecast("Düsseldorf", 1, Date.now);
+    const currentForecast = await getDailyForecast("Düsseldorf", 3, Date.now);
     renderCurrentWeather(currentForecast);
     renderForecastSummary(currentForecast);
     renderHourlyForecast(currentForecast);
